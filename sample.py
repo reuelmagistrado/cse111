@@ -1,5 +1,3 @@
-
-
 # # Open a text file named cities.txt in append mode.
 # with open("cities.txt", "a") as cities_file:
 
