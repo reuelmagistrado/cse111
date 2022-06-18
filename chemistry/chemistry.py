@@ -37,6 +37,8 @@ def main():
     # Compute the number of moles in the sample.
     number_of_moles = mass_in_grams / total_molar_mass
 
+    # spacer
+    print()
     # Print the compound name
     print(f"Compound Name: {formula_name}")
 
