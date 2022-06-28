@@ -1,6 +1,6 @@
 def main():
 
-    provinces_list = read_list("provinces.txt")
+    provinces_list = read_list("L09-checkpoint/provinces.txt")
     print(provinces_list)
 
     occurence_Alberta = count_Alberta(provinces_list)
