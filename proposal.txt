@@ -1,0 +1,48 @@
+CSE 111 Proposal for a Student Chosen Program
+
+    (This is a proposal. All proposals are written with our best
+    knowledge at the beginning of a project. As we progress from the
+    beginning to the end of a project, we gain more knowledge, and we
+    change some of our proposed ideas. This is part of completing any
+    project and is fine.  However, we still must write a proposal so
+    that our teachers or supervisors know what we intend to do. Please
+    answer each of the following questions to the best of your
+    knowledge.)
+
+1. What is the title of your program?
+    Magistrado Apartment Rental Management
+
+2. What real-world problem will your program address or help to solve?
+    My aunt, who stands as the caretaker of the apartment, still uses pen and paper to compute the utilities that needs to be paid by each apartment. She also records the expenses such as plumbing, painting, and repair services. She tracks the payment of renters and put it on a notebook which is prone to being wet or destroyed. The program that I will develop will help ease the process of managing the apartment business of my mom, and will help my aunt focus on her studies, and take care of her children by having more free time.
+
+3. What will you learn from developing this program?
+    I will learn how to create GUI and implement functionalities in it. It will deepen my understanding of functional programming, using modules, and testing my functions.
+
+4. What Python modules will your program use?
+
+    (Some examples are: csv, datetime, functools, matplotlib, math,
+    pandas, pytest, random, requests, and tkinter.)
+
+    I will use tkinter so my program can be converted into a .exe application so my aunt can use it on her laptop. I will use the datetime so the record will be accurate and the renters can have a reference about their payment. I will also use the math module for computation purposes. CSV is another important module that I will use to save the transactions and expenses of the apartment. Lastly, I will use pytest to test my functions.
+
+5. Will you separate your Python program into functions that each
+perform a single task?
+
+    (Remember that the most reusable functions don't get user input and
+    don't print results but instead have parameters and return a result.
+    Functions that get user input and print results are important and do
+    useful work but are not easily reusable.)
+
+    (Remember also that it's hard to test functions that get user input
+    and print results. It's easy to test functions that don't get user
+    input and don't print results but instead have parameters and return
+    a result. Therefore, you should write most of your program functions
+    to have parameters and return a result.)
+
+    Yes, I will separate my Python program into functions tha each perform a single task.
+
+6. Will you write test functions to test at least two of your program
+functions?
+
+    Yes, I will write test functions to test most of my program functions.
+
