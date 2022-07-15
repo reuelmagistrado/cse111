@@ -40,6 +40,7 @@ def start_btn_clicked():
     """
 
     view_home(
+        window=window,
         canvas=canvas,
         canvas_container=background,
         images_list=images,
@@ -48,35 +49,21 @@ def start_btn_clicked():
     start_btn.destroy()  # Destroy start button widget
 
 
-# Create PhotoImage objects 
+# Create PhotoImage objects
 # and save each of them into a variable
 
-# Background Image for Welcome Page
 welcome_bg_img = PhotoImage(file=f"final_project/images/welcomebg.png")
-
-# Background Image for Start Button
 start_btn_img = PhotoImage(file=f"final_project/images/startbtn.png")
-
-# Background Image for Dashboard Page
 dashboard_bg_img = PhotoImage(file=f"final_project/images/dashboardbg.png")
-
-# Background Image for Home Button
 home_btn_img = PhotoImage(file=f"final_project/images/homebtn.png")
-
-# Background Image for Utilities Button
 utilities_btn_img = PhotoImage(file=f"final_project/images/utilitiesbtn.png")
-
-# Background Image for Payments Button
 payments_btn_img = PhotoImage(file=f"final_project/images/paymentsbtn.png")
-
-# Background Image for Receipt Button
 receipt_btn_img = PhotoImage(file=f"final_project/images/receiptbtn.png")
-
-# Background Image for Utilities Page
 utilities_bg_img = PhotoImage(file=f"final_project/images/utilitiesbg.png")
+payments_bg_img = PhotoImage(file=f"final_project/images/paymentsbg.png")
+receipts_bg_img = PhotoImage(file=f"final_project/images/receiptsbg.png")
 
-
-# Store the images into a list for readability purposes 
+# Store the images into a list for readability purposes
 # when passed as an argument
 images = [
     home_btn_img,
@@ -84,10 +71,12 @@ images = [
     payments_btn_img,
     receipt_btn_img,
     dashboard_bg_img,
-    utilities_bg_img
+    utilities_bg_img,
+    payments_bg_img,
+    receipts_bg_img,
 ]
 
-# Create a canvas where the other widgets will be placed into. 
+# Create a canvas where the other widgets will be placed into.
 # Save into a variable to be passed as an argument of view_home function
 canvas = Canvas(
     window,
@@ -100,8 +89,8 @@ canvas = Canvas(
 )
 canvas.place(x=0, y=0)
 
-# Create a canvas container 
-# and store into a variable 
+# Create a canvas container
+# and store into a variable
 # to be passed as an argument
 background = canvas.create_image(512.0, 384.0, image=welcome_bg_img)
 

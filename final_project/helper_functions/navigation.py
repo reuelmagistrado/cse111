@@ -1,13 +1,14 @@
+from cgitb import text
 from tkinter import *
 from constants import *
+import tkinter.font as font
+from helper_functions.calc import *
 
 
-#----------------------#
-#----------------------#
-#----DASHBOARD PAGE----#
-#----------------------#
-#----------------------#
-def view_home(canvas, canvas_container, images_list):
+# ----------------------#
+# ----DASHBOARD PAGE----#
+# ----------------------#
+def view_home(window, canvas, canvas_container, images_list):
     # Function headers comments that describe the purpose of the function. Don’t restate the name of the function. Describe the scope (range and domain) of inputs and outputs.2
     """It shows the dashboard page of the Rental Management Application. It doesn't have a domain, but its ranges are showing how many vacancies are there and how much profit you gained for the current month. The ranges automatically updates depending on the other data like payments.
 
@@ -19,7 +20,7 @@ def view_home(canvas, canvas_container, images_list):
     Return: None
     """
 
-    # Access the images in the images_list 
+    # Access the images in the images_list
     # and save them each into a variable
     dashboard_bg = images_list[DASHBOARD_BG_IMG_INDEX]
     home_btn_img = images_list[HOME_BTN_IMG_INDEX]
@@ -27,20 +28,21 @@ def view_home(canvas, canvas_container, images_list):
     payments_btn_img = images_list[PAYMENTS_BTN_IMG_INDEX]
     receipt_btn_img = images_list[RECEIPT_BTN_IMG_INDEX]
 
-
     def utilities_btn_clicked():
 
-        view_utilities(
-            canvas, canvas_container, images_list
-        )
+        view_utilities(window, canvas, canvas_container, images_list)
         canvas.delete(profit)
         canvas.delete(vacancy)
 
     def payments_btn_clicked():
-        print("payments_btn_clicked")
+        view_payments(window, canvas, canvas_container, images_list)
+        canvas.delete(profit)
+        canvas.delete(vacancy)
 
-    def receipt_btn_clicked():
-        print("receipt_btn_clicked")
+    def receipts_btn_clicked():
+        view_receipts(window, canvas, canvas_container, images_list)
+        canvas.delete(profit)
+        canvas.delete(vacancy)
 
     canvas.itemconfig(canvas_container, image=dashboard_bg)
     profit = canvas.create_text(
@@ -55,7 +57,6 @@ def view_home(canvas, canvas_container, images_list):
         image=home_btn_img,
         borderwidth=0,
         highlightthickness=0,
-        # command=home_btn_clicked,
         relief="flat",
     )
 
@@ -85,22 +86,17 @@ def view_home(canvas, canvas_container, images_list):
         image=receipt_btn_img,
         borderwidth=0,
         highlightthickness=0,
-        command=receipt_btn_clicked,
+        command=receipts_btn_clicked,
         relief="flat",
     )
 
     receipt_btn.place(x=841, y=0, width=157, height=52)
 
 
-
-#----------------------#
-#----------------------#
-#----UTILITIES PAGE----#
-#----------------------#
-#----------------------#
-def view_utilities(
-    canvas, canvas_container, images_list
-):
+# ----------------------#
+# ----UTILITIES PAGE----#
+# ----------------------#
+def view_utilities(window, canvas, canvas_container, images_list):
 
     utilities_bg = images_list[UTILITIES_BG_IMG_INDEX]
     home_btn_img = images_list[HOME_BTN_IMG_INDEX]
@@ -109,18 +105,28 @@ def view_utilities(
     receipt_btn_img = images_list[RECEIPT_BTN_IMG_INDEX]
 
     def home_btn_clicked():
-        view_home(
-            canvas, canvas_container, images_list
-        )
+        view_home(window, canvas, canvas_container, images_list)
         for entry_box in entry_boxes:
             entry_box.destroy()
 
         for text in canvas_texts:
             canvas.delete(text)
-    
 
-    def btn_clicked():
-        print("Button Clicked")
+    def payments_btn_clicked():
+        view_payments(window, canvas, canvas_container, images_list)
+        for entry_box in entry_boxes:
+            entry_box.destroy()
+
+        for text in canvas_texts:
+            canvas.delete(text)
+
+    def receipts_btn_clicked():
+        view_receipts(window, canvas, canvas_container, images_list)
+        for entry_box in entry_boxes:
+            entry_box.destroy()
+
+        for text in canvas_texts:
+            canvas.delete(text)
 
     canvas.itemconfig(canvas_container, image=utilities_bg)
 
@@ -147,7 +153,7 @@ def view_utilities(
         image=payments_btn_img,
         borderwidth=0,
         highlightthickness=0,
-        command=btn_clicked,
+        command=payments_btn_clicked,
         relief="flat",
     )
 
@@ -157,7 +163,7 @@ def view_utilities(
         image=receipt_btn_img,
         borderwidth=0,
         highlightthickness=0,
-        command=btn_clicked,
+        command=receipts_btn_clicked,
         relief="flat",
     )
 
@@ -286,12 +292,94 @@ def view_utilities(
     unit_f_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_f_present_elec.place(x=296, y=622, width=93, height=29)
 
+    btn_font = font.Font(family="Poppins-Bold", size=12, weight="bold")
+
+
+    compute_elecbill_btn = Button(
+        text="COMPUTE",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: compute_elec_bill(
+            canvas,
+            total_bill_elec,
+            unit_a_prev_elec,
+            unit_b_prev_elec,
+            unit_c_prev_elec,
+            unit_d_prev_elec,
+            unit_e_prev_elec,
+            unit_f_prev_elec,
+            unit_a_present_elec,
+            unit_b_present_elec,
+            unit_c_present_elec,
+            unit_d_present_elec,
+            unit_e_present_elec,
+            unit_f_present_elec,
+            unit_a_elecbill,
+            unit_b_elecbill,
+            unit_c_elecbill,
+            unit_d_elecbill,
+            unit_e_elecbill,
+            unit_f_elecbill,
+            meralco_rate
+        ),
+        relief="flat",
+    )
+
+    compute_elecbill_btn["font"] = btn_font
+    compute_elecbill_btn.place(x=174, y=678, width=93, height=52)
+
+    save_elecbill_btn = Button(
+        text="SAVE",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        # command=utilities_btn_clicked,
+        relief="flat",
+    )
+
+    save_elecbill_btn["font"] = btn_font
+    save_elecbill_btn.place(x=296, y=678, width=93, height=52)
+
+    compute_waterbill_btn = Button(
+        text="COMPUTE",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        # command=utilities_btn_clicked,
+        relief="flat",
+    )
+
+    compute_waterbill_btn["font"] = btn_font
+    compute_waterbill_btn.place(x=673, y=678, width=93, height=52)
+
+    save_waterbill_btn = Button(
+        text="SAVE",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        # command=utilities_btn_clicked,
+        relief="flat",
+    )
+
+    save_waterbill_btn["font"] = btn_font
+    save_waterbill_btn.place(x=795, y=678, width=93, height=52)
+
     unit_f_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_f_present_water.place(x=795, y=622, width=93, height=29)
 
     meralco_rate = canvas.create_text(
         281.5, 217.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
+
 
     maynilad_rate = canvas.create_text(
         780.5, 217.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
@@ -324,6 +412,10 @@ def view_utilities(
         unit_e_present_water,
         unit_f_present_elec,
         unit_f_present_water,
+        compute_elecbill_btn,
+        compute_waterbill_btn,
+        save_elecbill_btn,
+        save_waterbill_btn,
     ]
 
     canvas_texts = [
@@ -342,3 +434,342 @@ def view_utilities(
         unit_f_elecbill,
         unit_f_waterbill,
     ]
+
+
+# ----------------------#
+# -----PAYMENTS PAGE----#
+# ----------------------#
+def view_payments(window, canvas, canvas_container, images_list):
+    home_btn_img = images_list[HOME_BTN_IMG_INDEX]
+    utilities_btn_img = images_list[UTILITIES_BTN_IMG_INDEX]
+    payments_btn_img = images_list[PAYMENTS_BTN_IMG_INDEX]
+    receipt_btn_img = images_list[RECEIPT_BTN_IMG_INDEX]
+    payments_bg = images_list[PAYMENTS_BG_IMG_INDEX]
+
+    def home_btn_clicked():
+        view_home(window, canvas, canvas_container, images_list)
+        for checkbutton in checkbuttons:
+            checkbutton.destroy()
+        for label in labels:
+            canvas.delete(label)
+
+    def utilities_btn_clicked():
+        view_utilities(window, canvas, canvas_container, images_list)
+        for checkbutton in checkbuttons:
+            checkbutton.destroy()
+        for label in labels:
+            canvas.delete(label)
+
+    def receipts_btn_clicked():
+        view_receipts(window, canvas, canvas_container, images_list)
+        for checkbutton in checkbuttons:
+            checkbutton.destroy()
+        for label in labels:
+            canvas.delete(label)
+
+    canvas.itemconfig(canvas_container, image=payments_bg)
+
+    home_btn = Button(
+        image=home_btn_img,
+        borderwidth=0,
+        highlightthickness=0,
+        command=home_btn_clicked,
+        relief="flat",
+    )
+
+    home_btn.place(x=0, y=-3, width=475, height=68)
+
+    utilities_btn = Button(
+        image=utilities_btn_img,
+        borderwidth=0,
+        highlightthickness=0,
+        command=utilities_btn_clicked,
+        relief="flat",
+    )
+
+    utilities_btn.place(x=493, y=0, width=157, height=52)
+
+    payments_btn = Button(
+        image=payments_btn_img,
+        borderwidth=0,
+        highlightthickness=0,
+        relief="flat",
+    )
+
+    payments_btn.place(x=667, y=0, width=157, height=52)
+
+    receipt_btn = Button(
+        image=receipt_btn_img,
+        borderwidth=0,
+        highlightthickness=0,
+        command=receipts_btn_clicked,
+        relief="flat",
+    )
+
+    receipt_btn.place(x=841, y=0, width=157, height=52)
+
+    var1 = IntVar()
+    unita_checkbtn = Checkbutton(
+        window,
+        variable=var1,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unita_checkbtn.place(x=380, y=202, width=32, height=30)
+
+    var2 = IntVar()
+    unitb_checkbtn = Checkbutton(
+        window,
+        variable=var2,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unitb_checkbtn.place(x=380, y=270, width=32, height=30)
+
+    var3 = IntVar()
+    unitc_checkbtn = Checkbutton(
+        window,
+        variable=var3,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unitc_checkbtn.place(x=380, y=338, width=32, height=30)
+
+    var4 = IntVar()
+    unitd_checkbtn = Checkbutton(
+        window,
+        variable=var4,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unitd_checkbtn.place(x=380, y=407, width=32, height=30)
+
+    var5 = IntVar()
+    unite_checkbtn = Checkbutton(
+        window,
+        variable=var5,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unite_checkbtn.place(x=380, y=475, width=32, height=30)
+
+    var6 = IntVar()
+    unitf_checkbtn = Checkbutton(
+        window,
+        variable=var6,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unitf_checkbtn.place(x=380, y=543, width=32, height=30)
+
+    checkbuttons = [
+        unita_checkbtn,
+        unitb_checkbtn,
+        unitc_checkbtn,
+        unitd_checkbtn,
+        unite_checkbtn,
+        unitf_checkbtn,
+    ]
+
+    unita_balance = canvas.create_text(
+        567.5, 218.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
+    )
+
+    unitb_balance = canvas.create_text(
+        567.5, 287.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
+    )
+
+    unitc_balance = canvas.create_text(
+        567.5, 355.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
+    )
+
+    unitd_balance = canvas.create_text(
+        567.5, 423.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
+    )
+
+    unite_balance = canvas.create_text(
+        567.5, 490.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
+    )
+
+    unitf_balance = canvas.create_text(
+        567.5, 558.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
+    )
+
+    labels = [
+        unita_balance,
+        unitb_balance,
+        unitc_balance,
+        unitd_balance,
+        unite_balance,
+        unitf_balance,
+    ]
+
+
+# ----------------------#
+# -----RECEIPTS PAGE----#
+# ----------------------#
+def view_receipts(window, canvas, canvas_container, images_list):
+    home_btn_img = images_list[HOME_BTN_IMG_INDEX]
+    utilities_btn_img = images_list[UTILITIES_BTN_IMG_INDEX]
+    payments_btn_img = images_list[PAYMENTS_BTN_IMG_INDEX]
+    receipt_btn_img = images_list[RECEIPT_BTN_IMG_INDEX]
+    receipts_bg = images_list[RECEIPTS_BG_IMG_INDEX]
+
+    def home_btn_clicked():
+        view_home(window, canvas, canvas_container, images_list)
+        for button in buttons:
+            button.destroy()
+
+    def utilities_btn_clicked():
+        view_utilities(window, canvas, canvas_container, images_list)
+        for button in buttons:
+            button.destroy()
+
+    def payments_btn_clicked():
+        view_payments(window, canvas, canvas_container, images_list)
+        for button in buttons:
+            button.destroy()
+
+    def btn_clicked():
+        print("Button Clicked")
+
+    canvas.itemconfig(canvas_container, image=receipts_bg)
+
+    home_btn = Button(
+        image=home_btn_img,
+        borderwidth=0,
+        highlightthickness=0,
+        command=home_btn_clicked,
+        relief="flat",
+    )
+
+    home_btn.place(x=0, y=-3, width=475, height=68)
+
+    utilities_btn = Button(
+        image=utilities_btn_img,
+        borderwidth=0,
+        highlightthickness=0,
+        command=utilities_btn_clicked,
+        relief="flat",
+    )
+
+    utilities_btn.place(x=493, y=0, width=157, height=52)
+
+    payments_btn = Button(
+        image=payments_btn_img,
+        borderwidth=0,
+        highlightthickness=0,
+        command=payments_btn_clicked,
+        relief="flat",
+    )
+
+    payments_btn.place(x=667, y=0, width=157, height=52)
+
+    receipt_btn = Button(
+        image=receipt_btn_img,
+        borderwidth=0,
+        highlightthickness=0,
+        relief="flat",
+    )
+
+    receipt_btn.place(x=841, y=0, width=157, height=52)
+
+    btn_font = font.Font(family="Poppins-Bold", size=20, weight="bold")
+
+    btn_a = Button(
+        text="Unit A",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        command=btn_clicked,
+        relief="flat",
+    )
+
+    btn_a["font"] = btn_font
+    btn_a.place(x=219, y=202, width=150, height=67)
+
+    btn_b = Button(
+        text="Unit B",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        command=btn_clicked,
+        relief="flat",
+    )
+
+    btn_b["font"] = btn_font
+    btn_b.place(x=667, y=202, width=150, height=67)
+
+    btn_c = Button(
+        text="Unit C",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        command=btn_clicked,
+        relief="flat",
+    )
+
+    btn_c["font"] = btn_font
+    btn_c.place(x=219, y=350, width=150, height=67)
+
+    btn_d = Button(
+        text="Unit D",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        command=btn_clicked,
+        relief="flat",
+    )
+
+    btn_d["font"] = btn_font
+    btn_d.place(x=667, y=350, width=150, height=67)
+
+    btn_e = Button(
+        text="Unit E",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        command=btn_clicked,
+        relief="flat",
+    )
+
+    btn_e["font"] = btn_font
+    btn_e.place(x=219, y=498, width=150, height=67)
+
+    btn_f = Button(
+        text="Unit F",
+        bg="#FFE600",
+        activebackground="#000",
+        activeforeground="#FFE600",
+        borderwidth=0,
+        highlightthickness=0,
+        command=btn_clicked,
+        relief="flat",
+    )
+
+    btn_f["font"] = btn_font
+    btn_f.place(x=667, y=498, width=150, height=67)
+
+    buttons = [btn_a, btn_b, btn_c, btn_d, btn_e, btn_f]
