@@ -16,7 +16,7 @@ Defined Function(s):
 """
 
 __author__ = "Reuel Magistrado"
-__date__ = "July 7, 2013"
+__date__ = "July 16, 2022"
 __version__ = "1.0.1"
 __maintainer__ = "Reuel Magistrado"
 __email__ = "mag21010@byui.edu"
@@ -51,7 +51,6 @@ def start_btn_clicked():
 
 # Create PhotoImage objects
 # and save each of them into a variable
-
 welcome_bg_img = PhotoImage(file=f"final_project/images/welcomebg.png")
 start_btn_img = PhotoImage(file=f"final_project/images/startbtn.png")
 dashboard_bg_img = PhotoImage(file=f"final_project/images/dashboardbg.png")
@@ -62,6 +61,7 @@ receipt_btn_img = PhotoImage(file=f"final_project/images/receiptbtn.png")
 utilities_bg_img = PhotoImage(file=f"final_project/images/utilitiesbg.png")
 payments_bg_img = PhotoImage(file=f"final_project/images/paymentsbg.png")
 receipts_bg_img = PhotoImage(file=f"final_project/images/receiptsbg.png")
+
 
 # Store the images into a list for readability purposes
 # when passed as an argument

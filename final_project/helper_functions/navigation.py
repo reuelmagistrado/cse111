@@ -1,3 +1,26 @@
+"""This is the file that contains all the menu tab of the application.
+
+
+Description:
+    It is dependent with the main file of this application. When the application runs, it calls some of the functions located in here. 
+
+
+Defined Function(s):
+    view_home()
+    view_utilities()
+    view_payments()
+    view_receipts()
+"""
+
+__author__ = "Reuel Magistrado"
+__date__ = "July 16, 2022"
+__version__ = "1.0.1"
+__maintainer__ = "Reuel Magistrado"
+__email__ = "mag21010@byui.edu"
+__status__ = "Development"
+# ---------------------------------
+
+
 from cgitb import text
 from tkinter import *
 from constants import *
@@ -10,7 +33,6 @@ from helper_functions.vacancy import *
 # ----DASHBOARD PAGE----#
 # ----------------------#
 def view_home(window, canvas, canvas_container, images_list):
-    # Function headers comments that describe the purpose of the function. Don’t restate the name of the function. Describe the scope (range and domain) of inputs and outputs.2
     """It shows the dashboard page of the Rental Management Application. It doesn't have a domain, but its ranges are showing how many vacancies are there and how much profit you gained for the current month. The ranges automatically updates depending on the other data like payments.
 
     Parameters
