@@ -3,6 +3,7 @@ from tkinter import *
 from constants import *
 import tkinter.font as font
 from helper_functions.calc import *
+from helper_functions.vacancy import *
 
 
 # ----------------------#
@@ -48,7 +49,6 @@ def view_home(window, canvas, canvas_container, images_list):
     profit = canvas.create_text(
         646.0, 365.5, text="0", fill="#fff", font=("Poppins-Bold", int(96.0))
     )
-
     vacancy = canvas.create_text(
         152.0, 365.5, text="0", fill="#fff", font=("Poppins-Bold", int(96.0))
     )
@@ -188,7 +188,6 @@ def view_utilities(window, canvas, canvas_container, images_list):
         450.0, 637.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
 
-
     unit_a_waterbill = canvas.create_text(
         949.0, 357.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
@@ -216,7 +215,7 @@ def view_utilities(window, canvas, canvas_container, images_list):
     # Previous Electricity Consumption
     unit_a_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_a_prev_elec.place(x=174, y=342, width=93, height=29)
-    
+
     # Present Electricity Consumption
     unit_a_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_a_present_elec.place(x=296, y=342, width=93, height=29)
@@ -236,11 +235,11 @@ def view_utilities(window, canvas, canvas_container, images_list):
     # Present Electricity Consumption
     unit_c_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_c_present_elec.place(x=296, y=454, width=93, height=29)
-    
+
     # Previous Electricity Consumption
     unit_d_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_d_prev_elec.place(x=174, y=510, width=93, height=29)
-    
+
     # Present Electricity Consumption
     unit_d_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_d_present_elec.place(x=296, y=510, width=93, height=29)
@@ -260,7 +259,6 @@ def view_utilities(window, canvas, canvas_container, images_list):
     # Present Electricity Consumption
     unit_f_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_f_present_elec.place(x=296, y=622, width=93, height=29)
-
 
     # Water Bill Entry Boxes
 
@@ -315,10 +313,9 @@ def view_utilities(window, canvas, canvas_container, images_list):
     unit_f_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_f_present_water.place(x=795, y=622, width=93, height=29)
 
-
     # Font Format for Buttons in Utilities page
     btn_font = font.Font(family="Poppins-Bold", size=12, weight="bold")
-    
+
     compute_elecbill_btn = Button(
         text="COMPUTE",
         bg="#FFE600",
@@ -353,8 +350,6 @@ def view_utilities(window, canvas, canvas_container, images_list):
     )
     compute_elecbill_btn["font"] = btn_font
     compute_elecbill_btn.place(x=235, y=678, width=100, height=52)
-
-    
 
     compute_waterbill_btn = Button(
         text="COMPUTE",
@@ -529,6 +524,7 @@ def view_payments(window, canvas, canvas_container, images_list):
     unita_vacant_btn = Checkbutton(
         window,
         text="Yes",
+        command=lambda: unita_vacancy_changed(unita_paid_btn, var2),
         variable=var2,
         onvalue=1,
         offvalue=0,
@@ -548,11 +544,11 @@ def view_payments(window, canvas, canvas_container, images_list):
     )
     unitb_paid_btn.place(x=471, y=270, width=32, height=30)
 
-
     var4 = IntVar()
     unitb_vacant_btn = Checkbutton(
         window,
         text="Yes",
+        command=lambda: unitb_vacancy_changed(unitb_paid_btn, var4),
         variable=var4,
         onvalue=1,
         offvalue=0,
@@ -560,8 +556,6 @@ def view_payments(window, canvas, canvas_container, images_list):
         activebackground="#E1E1E1",
     )
     unitb_vacant_btn.place(x=696, y=270, width=40, height=30)
-
-
 
     var5 = IntVar()
     unitc_paid_btn = Checkbutton(
@@ -578,6 +572,7 @@ def view_payments(window, canvas, canvas_container, images_list):
     unitc_vacant_btn = Checkbutton(
         window,
         text="Yes",
+        command=lambda: unitc_vacancy_changed(unitc_paid_btn, var6),
         variable=var6,
         onvalue=1,
         offvalue=0,
@@ -601,6 +596,7 @@ def view_payments(window, canvas, canvas_container, images_list):
     unitd_vacant_btn = Checkbutton(
         window,
         text="Yes",
+        command=lambda: unitd_vacancy_changed(unitd_paid_btn, var8),
         variable=var8,
         onvalue=1,
         offvalue=0,
@@ -620,11 +616,11 @@ def view_payments(window, canvas, canvas_container, images_list):
     )
     unite_paid_btn.place(x=471, y=475, width=32, height=30)
 
-
     var10 = IntVar()
     unite_vacant_btn = Checkbutton(
         window,
         text="Yes",
+        command=lambda: unite_vacancy_changed(unite_paid_btn, var10),
         variable=var10,
         onvalue=1,
         offvalue=0,
@@ -632,7 +628,6 @@ def view_payments(window, canvas, canvas_container, images_list):
         activebackground="#E1E1E1",
     )
     unite_vacant_btn.place(x=696, y=475, width=40, height=30)
-
 
     var11 = IntVar()
     unitf_paid_btn = Checkbutton(
@@ -649,6 +644,7 @@ def view_payments(window, canvas, canvas_container, images_list):
     unitf_vacant_btn = Checkbutton(
         window,
         text="Yes",
+        command=lambda: unitf_vacancy_changed(unitf_paid_btn, var12),
         variable=var12,
         onvalue=1,
         offvalue=0,
@@ -669,9 +665,8 @@ def view_payments(window, canvas, canvas_container, images_list):
         unitc_vacant_btn,
         unitd_vacant_btn,
         unite_vacant_btn,
-        unitf_vacant_btn
+        unitf_vacant_btn,
     ]
-
 
 
 # ----------------------#
