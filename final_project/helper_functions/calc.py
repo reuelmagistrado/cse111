@@ -1,4 +1,3 @@
-from cgitb import text
 
 
 def compute_unita_electricity(canvas, prev, present, bill):
@@ -122,7 +121,7 @@ def compute_elec_bill(
     canvas.itemconfig(meralco_rate, text=f"{electricity_rate:.2f}")
 
     unita_elec = unita_elec_consumption * electricity_rate
-    canvas.itemconfig(unit_a_elecbill,text=f"{unita_elec:.2f}")
+    canvas.itemconfig(unit_a_elecbill,text=f"{round(unita_elec, 3)}")
 
     unitb_elec = unitb_elec_consumption * electricity_rate
     canvas.itemconfig(unit_b_elecbill,text=f"{unitb_elec:.2f}")

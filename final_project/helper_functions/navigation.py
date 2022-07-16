@@ -46,11 +46,11 @@ def view_home(window, canvas, canvas_container, images_list):
 
     canvas.itemconfig(canvas_container, image=dashboard_bg)
     profit = canvas.create_text(
-        646.0, 365.5, text="1", fill="#fff", font=("Poppins-Bold", int(96.0))
+        646.0, 365.5, text="0", fill="#fff", font=("Poppins-Bold", int(96.0))
     )
 
     vacancy = canvas.create_text(
-        152.0, 365.5, text="1", fill="#fff", font=("Poppins-Bold", int(96.0))
+        152.0, 365.5, text="0", fill="#fff", font=("Poppins-Bold", int(96.0))
     )
 
     home_btn = Button(
@@ -172,129 +172,153 @@ def view_utilities(window, canvas, canvas_container, images_list):
     unit_a_elecbill = canvas.create_text(
         450.0, 357.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
-
-    unit_a_waterbill = canvas.create_text(
-        949.0, 357.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
-    )
-
     unit_b_elecbill = canvas.create_text(
         450.0, 413.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
-
-    unit_b_waterbill = canvas.create_text(
-        949.0, 413.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
-    )
-
     unit_c_elecbill = canvas.create_text(
         450.0, 469.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
-
-    unit_c_waterbill = canvas.create_text(
-        949.0, 469.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
-    )
-
     unit_d_elecbill = canvas.create_text(
         450.0, 525.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
-
-    unit_d_waterbill = canvas.create_text(
-        949.0, 525.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
-    )
-
     unit_e_elecbill = canvas.create_text(
         450.0, 581.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
-
-    unit_e_waterbill = canvas.create_text(
-        949.0, 581.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
-    )
-
     unit_f_elecbill = canvas.create_text(
         450.0, 637.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
 
+
+    unit_a_waterbill = canvas.create_text(
+        949.0, 357.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
+    )
+    unit_b_waterbill = canvas.create_text(
+        949.0, 413.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
+    )
+    unit_c_waterbill = canvas.create_text(
+        949.0, 469.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
+    )
+    unit_d_waterbill = canvas.create_text(
+        949.0, 525.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
+    )
+    unit_e_waterbill = canvas.create_text(
+        949.0, 581.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
+    )
     unit_f_waterbill = canvas.create_text(
         949.0, 637.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
 
-    unit_a_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_a_prev_elec.place(x=174, y=342, width=93, height=29)
-
-    unit_a_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_a_prev_water.place(x=673, y=342, width=93, height=29)
+    # Electricity Bill Entry Boxes
 
     total_bill_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     total_bill_elec.place(x=174, y=152, width=215, height=29)
 
-    total_bill_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    total_bill_water.place(x=673, y=152, width=215, height=29)
-
-    unit_b_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_b_prev_elec.place(x=174, y=398, width=93, height=29)
-
-    unit_b_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_b_prev_water.place(x=673, y=398, width=93, height=29)
-
-    unit_c_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_c_prev_elec.place(x=174, y=454, width=93, height=29)
-
-    unit_c_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_c_prev_water.place(x=673, y=454, width=93, height=29)
-
-    unit_d_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_d_prev_elec.place(x=174, y=510, width=93, height=29)
-
-    unit_d_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_d_prev_water.place(x=673, y=510, width=93, height=29)
-
-    unit_e_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_e_prev_elec.place(x=174, y=566, width=93, height=29)
-
-    unit_e_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_e_prev_water.place(x=673, y=566, width=93, height=29)
-
-    unit_f_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_f_prev_elec.place(x=174, y=622, width=93, height=29)
-
-    unit_f_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_f_prev_water.place(x=673, y=622, width=93, height=29)
-
+    # Previous Electricity Consumption
+    unit_a_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_a_prev_elec.place(x=174, y=342, width=93, height=29)
+    
+    # Present Electricity Consumption
     unit_a_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_a_present_elec.place(x=296, y=342, width=93, height=29)
 
-    unit_a_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_a_present_water.place(x=795, y=342, width=93, height=29)
+    # Previous Electricity Consumption
+    unit_b_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_b_prev_elec.place(x=174, y=398, width=93, height=29)
 
+    # Present Electricity Consumption
     unit_b_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_b_present_elec.place(x=296, y=398, width=93, height=29)
 
-    unit_b_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_b_present_water.place(x=795, y=398, width=93, height=29)
+    # Previous Electricity Consumption
+    unit_c_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_c_prev_elec.place(x=174, y=454, width=93, height=29)
 
+    # Present Electricity Consumption
     unit_c_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_c_present_elec.place(x=296, y=454, width=93, height=29)
-
-    unit_c_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_c_present_water.place(x=795, y=454, width=93, height=29)
-
+    
+    # Previous Electricity Consumption
+    unit_d_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_d_prev_elec.place(x=174, y=510, width=93, height=29)
+    
+    # Present Electricity Consumption
     unit_d_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_d_present_elec.place(x=296, y=510, width=93, height=29)
 
-    unit_d_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_d_present_water.place(x=795, y=510, width=93, height=29)
+    # Previous Electricity Consumption
+    unit_e_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_e_prev_elec.place(x=174, y=566, width=93, height=29)
 
+    # Present Electricity Consumption
     unit_e_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_e_present_elec.place(x=296, y=566, width=93, height=29)
 
-    unit_e_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_e_present_water.place(x=795, y=566, width=93, height=29)
+    # Previous Electricity Consumption
+    unit_f_prev_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_f_prev_elec.place(x=174, y=622, width=93, height=29)
 
+    # Present Electricity Consumption
     unit_f_present_elec = Entry(bd=0, bg="#fff", highlightthickness=0)
     unit_f_present_elec.place(x=296, y=622, width=93, height=29)
 
+
+    # Water Bill Entry Boxes
+
+    total_bill_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    total_bill_water.place(x=673, y=152, width=215, height=29)
+
+    # Previous Water Consumption
+    unit_a_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_a_prev_water.place(x=673, y=342, width=93, height=29)
+
+    # Present Water Consumption
+    unit_a_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_a_present_water.place(x=795, y=342, width=93, height=29)
+
+    # Previous Water Consumption
+    unit_b_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_b_prev_water.place(x=673, y=398, width=93, height=29)
+
+    # Present Water Consumption
+    unit_b_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_b_present_water.place(x=795, y=398, width=93, height=29)
+
+    # Previous Water Consumption
+    unit_c_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_c_prev_water.place(x=673, y=454, width=93, height=29)
+
+    # Present Water Consumption
+    unit_c_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_c_present_water.place(x=795, y=454, width=93, height=29)
+
+    # Previous Water Consumption
+    unit_d_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_d_prev_water.place(x=673, y=510, width=93, height=29)
+
+    # Present Water Consumption
+    unit_d_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_d_present_water.place(x=795, y=510, width=93, height=29)
+
+    # Previous Water Consumption
+    unit_e_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_e_prev_water.place(x=673, y=566, width=93, height=29)
+
+    # Present Water Consumption
+    unit_e_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_e_present_water.place(x=795, y=566, width=93, height=29)
+
+    # Previous Water Consumption
+    unit_f_prev_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_f_prev_water.place(x=673, y=622, width=93, height=29)
+
+    # Present Water Consumption
+    unit_f_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
+    unit_f_present_water.place(x=795, y=622, width=93, height=29)
+
+
+    # Font Format for Buttons in Utilities page
     btn_font = font.Font(family="Poppins-Bold", size=12, weight="bold")
-
-
+    
     compute_elecbill_btn = Button(
         text="COMPUTE",
         bg="#FFE600",
@@ -323,11 +347,10 @@ def view_utilities(window, canvas, canvas_container, images_list):
             unit_d_elecbill,
             unit_e_elecbill,
             unit_f_elecbill,
-            meralco_rate
+            meralco_rate,
         ),
         relief="flat",
     )
-
     compute_elecbill_btn["font"] = btn_font
     compute_elecbill_btn.place(x=174, y=678, width=93, height=52)
 
@@ -341,7 +364,6 @@ def view_utilities(window, canvas, canvas_container, images_list):
         # command=utilities_btn_clicked,
         relief="flat",
     )
-
     save_elecbill_btn["font"] = btn_font
     save_elecbill_btn.place(x=296, y=678, width=93, height=52)
 
@@ -355,7 +377,6 @@ def view_utilities(window, canvas, canvas_container, images_list):
         # command=utilities_btn_clicked,
         relief="flat",
     )
-
     compute_waterbill_btn["font"] = btn_font
     compute_waterbill_btn.place(x=673, y=678, width=93, height=52)
 
@@ -369,17 +390,12 @@ def view_utilities(window, canvas, canvas_container, images_list):
         # command=utilities_btn_clicked,
         relief="flat",
     )
-
     save_waterbill_btn["font"] = btn_font
     save_waterbill_btn.place(x=795, y=678, width=93, height=52)
-
-    unit_f_present_water = Entry(bd=0, bg="#fff", highlightthickness=0)
-    unit_f_present_water.place(x=795, y=622, width=93, height=29)
 
     meralco_rate = canvas.create_text(
         281.5, 217.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
     )
-
 
     maynilad_rate = canvas.create_text(
         780.5, 217.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
@@ -450,22 +466,16 @@ def view_payments(window, canvas, canvas_container, images_list):
         view_home(window, canvas, canvas_container, images_list)
         for checkbutton in checkbuttons:
             checkbutton.destroy()
-        for label in labels:
-            canvas.delete(label)
 
     def utilities_btn_clicked():
         view_utilities(window, canvas, canvas_container, images_list)
         for checkbutton in checkbuttons:
             checkbutton.destroy()
-        for label in labels:
-            canvas.delete(label)
 
     def receipts_btn_clicked():
         view_receipts(window, canvas, canvas_container, images_list)
         for checkbutton in checkbuttons:
             checkbutton.destroy()
-        for label in labels:
-            canvas.delete(label)
 
     canvas.itemconfig(canvas_container, image=payments_bg)
 
@@ -509,7 +519,7 @@ def view_payments(window, canvas, canvas_container, images_list):
     receipt_btn.place(x=841, y=0, width=157, height=52)
 
     var1 = IntVar()
-    unita_checkbtn = Checkbutton(
+    unita_paid_btn = Checkbutton(
         window,
         variable=var1,
         onvalue=1,
@@ -517,21 +527,22 @@ def view_payments(window, canvas, canvas_container, images_list):
         bg="#E1E1E1",
         activebackground="#E1E1E1",
     )
-    unita_checkbtn.place(x=380, y=202, width=32, height=30)
+    unita_paid_btn.place(x=471, y=202, width=32, height=30)
 
     var2 = IntVar()
-    unitb_checkbtn = Checkbutton(
+    unita_vacant_btn = Checkbutton(
         window,
+        text="Yes",
         variable=var2,
         onvalue=1,
         offvalue=0,
         bg="#E1E1E1",
         activebackground="#E1E1E1",
     )
-    unitb_checkbtn.place(x=380, y=270, width=32, height=30)
+    unita_vacant_btn.place(x=696, y=202, width=40, height=30)
 
     var3 = IntVar()
-    unitc_checkbtn = Checkbutton(
+    unitb_paid_btn = Checkbutton(
         window,
         variable=var3,
         onvalue=1,
@@ -539,21 +550,25 @@ def view_payments(window, canvas, canvas_container, images_list):
         bg="#E1E1E1",
         activebackground="#E1E1E1",
     )
-    unitc_checkbtn.place(x=380, y=338, width=32, height=30)
+    unitb_paid_btn.place(x=471, y=270, width=32, height=30)
+
 
     var4 = IntVar()
-    unitd_checkbtn = Checkbutton(
+    unitb_vacant_btn = Checkbutton(
         window,
+        text="Yes",
         variable=var4,
         onvalue=1,
         offvalue=0,
         bg="#E1E1E1",
         activebackground="#E1E1E1",
     )
-    unitd_checkbtn.place(x=380, y=407, width=32, height=30)
+    unitb_vacant_btn.place(x=696, y=270, width=40, height=30)
+
+
 
     var5 = IntVar()
-    unite_checkbtn = Checkbutton(
+    unitc_paid_btn = Checkbutton(
         window,
         variable=var5,
         onvalue=1,
@@ -561,60 +576,106 @@ def view_payments(window, canvas, canvas_container, images_list):
         bg="#E1E1E1",
         activebackground="#E1E1E1",
     )
-    unite_checkbtn.place(x=380, y=475, width=32, height=30)
+    unitc_paid_btn.place(x=471, y=338, width=32, height=30)
 
     var6 = IntVar()
-    unitf_checkbtn = Checkbutton(
+    unitc_vacant_btn = Checkbutton(
         window,
+        text="Yes",
         variable=var6,
         onvalue=1,
         offvalue=0,
         bg="#E1E1E1",
         activebackground="#E1E1E1",
     )
-    unitf_checkbtn.place(x=380, y=543, width=32, height=30)
+    unitc_vacant_btn.place(x=696, y=338, width=40, height=30)
+
+    var7 = IntVar()
+    unitd_paid_btn = Checkbutton(
+        window,
+        variable=var7,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unitd_paid_btn.place(x=471, y=407, width=32, height=30)
+
+    var8 = IntVar()
+    unitd_vacant_btn = Checkbutton(
+        window,
+        text="Yes",
+        variable=var8,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unitd_vacant_btn.place(x=696, y=407, width=40, height=30)
+
+    var9 = IntVar()
+    unite_paid_btn = Checkbutton(
+        window,
+        variable=var9,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unite_paid_btn.place(x=471, y=475, width=32, height=30)
+
+
+    var10 = IntVar()
+    unite_vacant_btn = Checkbutton(
+        window,
+        text="Yes",
+        variable=var10,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unite_vacant_btn.place(x=696, y=475, width=40, height=30)
+
+
+    var11 = IntVar()
+    unitf_paid_btn = Checkbutton(
+        window,
+        variable=var11,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unitf_paid_btn.place(x=471, y=543, width=32, height=30)
+
+    var12 = IntVar()
+    unitf_vacant_btn = Checkbutton(
+        window,
+        text="Yes",
+        variable=var12,
+        onvalue=1,
+        offvalue=0,
+        bg="#E1E1E1",
+        activebackground="#E1E1E1",
+    )
+    unitf_vacant_btn.place(x=696, y=543, width=40, height=30)
 
     checkbuttons = [
-        unita_checkbtn,
-        unitb_checkbtn,
-        unitc_checkbtn,
-        unitd_checkbtn,
-        unite_checkbtn,
-        unitf_checkbtn,
+        unita_paid_btn,
+        unitb_paid_btn,
+        unitc_paid_btn,
+        unitd_paid_btn,
+        unite_paid_btn,
+        unitf_paid_btn,
+        unita_vacant_btn,
+        unitb_vacant_btn,
+        unitc_vacant_btn,
+        unitd_vacant_btn,
+        unite_vacant_btn,
+        unitf_vacant_btn
     ]
 
-    unita_balance = canvas.create_text(
-        567.5, 218.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
-    )
-
-    unitb_balance = canvas.create_text(
-        567.5, 287.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
-    )
-
-    unitc_balance = canvas.create_text(
-        567.5, 355.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
-    )
-
-    unitd_balance = canvas.create_text(
-        567.5, 423.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
-    )
-
-    unite_balance = canvas.create_text(
-        567.5, 490.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
-    )
-
-    unitf_balance = canvas.create_text(
-        567.5, 558.5, text="7000", fill="#000000", font=("Poppins-Bold", int(20.0))
-    )
-
-    labels = [
-        unita_balance,
-        unitb_balance,
-        unitc_balance,
-        unitd_balance,
-        unite_balance,
-        unitf_balance,
-    ]
 
 
 # ----------------------#
