@@ -352,20 +352,9 @@ def view_utilities(window, canvas, canvas_container, images_list):
         relief="flat",
     )
     compute_elecbill_btn["font"] = btn_font
-    compute_elecbill_btn.place(x=174, y=678, width=93, height=52)
+    compute_elecbill_btn.place(x=235, y=678, width=100, height=52)
 
-    save_elecbill_btn = Button(
-        text="SAVE",
-        bg="#FFE600",
-        activebackground="#000",
-        activeforeground="#FFE600",
-        borderwidth=0,
-        highlightthickness=0,
-        # command=utilities_btn_clicked,
-        relief="flat",
-    )
-    save_elecbill_btn["font"] = btn_font
-    save_elecbill_btn.place(x=296, y=678, width=93, height=52)
+    
 
     compute_waterbill_btn = Button(
         text="COMPUTE",
@@ -374,24 +363,33 @@ def view_utilities(window, canvas, canvas_container, images_list):
         activeforeground="#FFE600",
         borderwidth=0,
         highlightthickness=0,
-        # command=utilities_btn_clicked,
+        command=lambda: compute_water_bill(
+            canvas,
+            total_bill_water,
+            unit_a_prev_water,
+            unit_b_prev_water,
+            unit_c_prev_water,
+            unit_d_prev_water,
+            unit_e_prev_water,
+            unit_f_prev_water,
+            unit_a_present_water,
+            unit_b_present_water,
+            unit_c_present_water,
+            unit_d_present_water,
+            unit_e_present_water,
+            unit_f_present_water,
+            unit_a_waterbill,
+            unit_b_waterbill,
+            unit_c_waterbill,
+            unit_d_waterbill,
+            unit_e_waterbill,
+            unit_f_waterbill,
+            maynilad_rate,
+        ),
         relief="flat",
     )
     compute_waterbill_btn["font"] = btn_font
-    compute_waterbill_btn.place(x=673, y=678, width=93, height=52)
-
-    save_waterbill_btn = Button(
-        text="SAVE",
-        bg="#FFE600",
-        activebackground="#000",
-        activeforeground="#FFE600",
-        borderwidth=0,
-        highlightthickness=0,
-        # command=utilities_btn_clicked,
-        relief="flat",
-    )
-    save_waterbill_btn["font"] = btn_font
-    save_waterbill_btn.place(x=795, y=678, width=93, height=52)
+    compute_waterbill_btn.place(x=730, y=678, width=100, height=52)
 
     meralco_rate = canvas.create_text(
         281.5, 217.5, text="0", fill="#000000", font=("Poppins-Regular", int(16.0))
@@ -430,8 +428,6 @@ def view_utilities(window, canvas, canvas_container, images_list):
         unit_f_present_water,
         compute_elecbill_btn,
         compute_waterbill_btn,
-        save_elecbill_btn,
-        save_waterbill_btn,
     ]
 
     canvas_texts = [
